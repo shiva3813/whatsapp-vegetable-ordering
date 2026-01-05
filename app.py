@@ -1,7 +1,6 @@
-from flask import Flask, request, render_template
-import sqlite3
+from flask import Flask, request, render_template, redirect
 import os
-from flask import redirect
+import sqlite3
 from db import get_order_counts, update_status
 from twilio.rest import Client
 from db import get_products, save_order
