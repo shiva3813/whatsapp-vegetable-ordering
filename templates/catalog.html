@@ -51,7 +51,7 @@
 <div class="grid">
 {% for p in products %}
     <div class="card">
-        <img src="{{ url_for('static', filename='images/' + p[3]) }}">
+        <img src="{{ url_for('static', filename='images/' ~ p[3]) }}" alt="{{ p[1] }}" width="150">
         <h3>{{ p[1] }}</h3>
         <p>₹{{ p[2] }} / kg</p>
 

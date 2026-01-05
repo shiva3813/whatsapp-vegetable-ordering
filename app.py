@@ -8,7 +8,7 @@ from flask import Flask, request, render_template
 from twilio.twiml.messaging_response import MessagingResponse
 from db import init_db, save_order, get_all_orders
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static")
 init_db()
 
 user_state = {}
