@@ -85,6 +85,11 @@ def admin():
         delivered=delivered
     )
 
+@app.route("/")
+def home():
+    return redirect("/catalog")
+
+
 @app.route("/update_status/<int:order_id>")
 def update_status_route(order_id):
     conn = sqlite3.connect("orders.db")
