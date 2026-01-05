@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Fruits & Vegetables</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 150px;
+            height: 120px;
+            object-fit: cover;
+        }
+        input {
+            width: 80%;
+            padding: 6px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 8px;
+            padding: 6px 15px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>🛒 Select Fruits & Vegetables</h2>
+
+<div class="grid">
+{% for p in products %}
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/' + p[3]) }}">
+        <h3>{{ p[1] }}</h3>
+        <p>₹{{ p[2] }} / kg</p>
+
+        <form method="post" action="/place_order">
+            <input type="hidden" name="product" value="{{ p[1] }}">
+            <input type="number" name="quantity" placeholder="Quantity" required>
+            <button type="submit">Order</button>
+        </form>
+    </div>
+{% endfor %}
+</div>
+
+</body>
+</html>
